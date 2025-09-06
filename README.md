@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laporan Stock Opname</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      background-color: grey;
+      font-family: sans-serif;
+    }
+
+    #main-container {
+      width: 95%;
+      background-color: white;
+      padding: 15px;
+      margin: auto;
+    }
+
+    #main-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #table-container {
+      width: 100%;
+      margin: auto;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    td, th {
+      border: 1px solid black;
+      padding: 5px;
+      text-align: center;
+    }
+
+    button {
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="main-container">
+    <h2>LAPORAN STOCK OPNAME BARANG PT. ABC <br> Periode 1-31 Agustus 2021</h2>
+
+    <div id="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Harga Jual</th>
+            <th colspan="2">Stok Awal</th>
+            <th colspan="2">Penjualan</th>
+            <th colspan="2">Barang Masuk</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Jumlah</th>
+            <th>Nilai</th>
+            <th>Jumlah</th>
+            <th>Nilai</th>
+            <th>Jumlah</th>
+            <th>Nilai</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>25,000</td><td>20</td><td>400,000</td><td>7</td><td>175,000</td><td>30</td><td>600,000</td></tr>
+          <tr><td>40,000</td><td>20</td><td>600,000</td><td>11</td><td>440,000</td><td>30</td><td>900,000</td></tr>
+          <tr><td>20,000</td><td>20</td><td>300,000</td><td>12</td><td>240,000</td><td>30</td><td>450,000</td></tr>
+          <tr><td>10,000</td><td>20</td><td>100,000</td><td>4</td><td>40,000</td><td>30</td><td>150,000</td></tr>
+          <tr><td>40,000</td><td>20</td><td>400,000</td><td>6</td><td>240,000</td><td>30</td><td>600,000</td></tr>
+          <tr><td>130,000</td><td>20</td><td>2,000,000</td><td>17</td><td>2,210,000</td><td>30</td><td>3,000,000</td></tr>
+          <tr><td>150,000</td><td>20</td><td>2,000,000</td><td>2</td><td>300,000</td><td>30</td><td>3,000,000</td></tr>
+          <tr><td>250,000</td><td>20</td><td>4,000,000</td><td>1</td><td>250,000</td><td>30</td><td>6,000,000</td></tr>
+          <tr><td>10,000</td><td>20</td><td>100,000</td><td>5</td><td>50,000</td><td>30</td><td>150,000</td></tr>
+          <tr><td>75,000</td><td>20</td><td>1,400,000</td><td>15</td><td>1,125,000</td><td>30</td><td>2,100,000</td></tr>
+          <tr><td>25,000</td><td>20</td><td>400,000</td><td>13</td><td>325,000</td><td>30</td><td>600,000</td></tr>
+          <tr><td>40,000</td><td>20</td><td>700,000</td><td>17</td><td>680,000</td><td>30</td><td>1,050,000</td></tr>
+          <tr><td>50,000</td><td>20</td><td>800,000</td><td>6</td><td>300,000</td><td>30</td><td>1,200,000</td></tr>
+          <tr><td>30,000</td><td>20</td><td>300,000</td><td>11</td><td>330,000</td><td>30</td><td>450,000</td></tr>
+          <tr><td>35,000</td><td>20</td><td>600,000</td><td>10</td><td>350,000</td><td>30</td><td>900,000</td></tr>
+          <tr>
+            <th>Total</th>
+            <th>300</th>
+            <th>14,100,000</th>
+            <th>137</th>
+            <th>7,055,000</th>
+            <th>450</th>
+            <th>21,150,000</th>
+          </tr>
+        </tbody>
+      </table>
+      <button>Change to Colorfull</button>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      colorLess();
+
+      $("button").click(function () {
+        var textButton = $(this).text();
+
+        if (textButton == "Change to Colorfull") {
+          $(this).text("Change to Colorless");
+          colorFull();
+        } else {
+          $(this).text("Change to Colorfull");
+          colorLess();
+        }
+      });
+
+      function colorLess() {
+        // header hitam
+        $("thead th").css({
+          "background": "black",
+          "color": "white"
+        });
+
+        // isi reset ke putih
+        $("tbody tr").css({
+          "background": "white",
+          "color": "black"
+        });
+
+        // total ikut header
+        $("tbody tr:last-child th").css({
+          "background": "black",
+          "color": "white"
+        });
+
+        $("button").css({
+          "background": "#CCCCCC",
+          "color": "black"
+        });
+      }
+
+      function colorFull() {
+        // header merah soft
+        $("thead th").css({
+          "background": "#ff6666",
+          "color": "white"
+        });
+
+        // isi baris selang-seling
+        $("tbody tr:even").css({
+          "background": "blue",
+          "color": "white"
+        });
+        $("tbody tr:odd").css({
+          "background": "yellow",
+          "color": "black"
+        });
+
+        // total ikut header
+        $("tbody tr:last-child th").css({
+          "background": "#ff6666",
+          "color": "white"
+        });
+
+        $("button").css({
+          "background": "red",
+          "color": "white"
+        });
+      }
+    });
+  </script>
+</body>
+</html>
